@@ -1,3 +1,4 @@
+
 # Start with a lightweight Debian-based image
 FROM debian:bullseye-slim
 
@@ -21,6 +22,7 @@ RUN pip3 install --no-cache-dir \
     tensorflow \
     flask
 WORKDIR /myapp
+COPY --from=builder /app /myapp  # Copy application files and installed libraries
 COPY . /myapp
 CMD ["python", "app.py"]
 EXPOSE 3000
