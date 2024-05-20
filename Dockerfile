@@ -1,18 +1,29 @@
-# Stage 1: Install dependencies
-FROM python:3.11-slim AS builder
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-# Add repositories for libraries (replace with appropriate URLs)
-RUN apt-get update && apt-get install -y --no-install-recommends \
+
+# Start with a lightweight Debian-based image
+FROM debian:bullseye-slim
+
+# Set environment variables to avoid interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package lists and install dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    python3 \
+    python3-pip \
+    python3-dev \
+    build-essential \
+    wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
-    flask \
-    tensorflow-gpu 
-# Stage 2: Create final image
-FROM python:3.11-slim
+    tensorflow \
+    flask
 WORKDIR /myapp
 COPY --from=builder /app /myapp  # Copy application files and installed libraries
 COPY . /myapp
 CMD ["python", "app.py"]
-Expose 3000
+EXPOSE 3000
 
