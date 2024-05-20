@@ -15,7 +15,6 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python packages
 RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
