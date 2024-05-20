@@ -19,7 +19,7 @@ RUN apt-get update && \
 RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
-    tensorflow \
+    keras \
     flask
 WORKDIR /myapp
 COPY . /myapp
