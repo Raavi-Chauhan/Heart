@@ -15,6 +15,7 @@ RUN apt-get update && \
     wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+ENV PATH="/opt/gtk/bin:$PATH"
 
 RUN pip3 install --no-cache-dir \
     pandas \
