@@ -9,12 +9,17 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.naive_bayes import GaussianNB
 
-from tensorflow import keras
-from keras.layers import Dense
-from keras.layers import Input
-from keras.models import Model
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, Input
+from tensorflow.keras.models import Model, Sequential, load_model
 
-from keras.models import Sequential, load_model
+
+#from tensorflow import keras
+#from keras.layers import Dense
+#from keras.layers import Input
+#from keras.models import Model
+
+#from keras.models import Sequential, load_model
 
 app = Flask(__name__)
 
@@ -109,4 +114,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+    app.run(port=3000, debug=True,host='0.0.0.0')
