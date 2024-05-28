@@ -23,6 +23,7 @@ RUN pip3 install --no-cache-dir \
     flask
 WORKDIR /myapp
 COPY . /myapp
-CMD ["python3", "app.py"]
 EXPOSE 3000
+CMD ["python3", "app.py"]
+
 
