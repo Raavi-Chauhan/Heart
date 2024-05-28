@@ -15,15 +15,14 @@ RUN apt-get update && \
     wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-ENV PATH="/opt/gtk/bin:$PATH"
 
 RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
-    keras \
+    tensorflow \
     flask
 WORKDIR /myapp
 COPY . /myapp
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
 EXPOSE 3000
 
