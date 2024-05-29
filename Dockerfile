@@ -19,8 +19,9 @@ RUN apt-get update && \
 RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
-    tensorflow==3 \
-    flask
+    tensorflow==2.9 \
+    flask \
+    turtle
 WORKDIR /myapp
 COPY . /myapp
 EXPOSE 3000
