@@ -14,6 +14,7 @@ node {
         
         stage('Clone Repository') {
             // Clone the repository from GitHub
+            cleanWs()
             git branch: gitBranch, url: gitRepoUrl
         }
 
