@@ -1,6 +1,6 @@
 node {
     // Define environment variables
-    def dockerHubCredentialsId = 'Dockerhub // Replace with your Docker Hub credentials ID'
+    //def dockerHubCredentialsId = 'Dockerhub // Replace with your Docker Hub credentials ID'
     def dockerImageName = 'raavi/heart_13'
     def gitRepoUrl = 'https://github.com/Raavi-Chauhan/Heart.git'
     def gitBranch = 'main'
@@ -25,12 +25,12 @@ node {
             sh "docker build -t ${imageName} ."
 
 
-            docker.withRegistry('https://hub.docker.com/', dockerHubCredentialsId) {
-            sh "docker push ${imageName}"
-            }
-            //sh "docker login -u "raavi13" --password 'Nice2Meetyou'"
-            // Push the image to Docker Hub
+            //docker.withRegistry('https://hub.docker.com/', dockerHubCredentialsId) {
             //sh "docker push ${imageName}"
+            //}
+            sh "docker login -u "raavi13" --password 'Nice2Meetyou'"
+            // Push the image to Docker Hub
+            sh "docker push ${imageName}"
 
         }
 
