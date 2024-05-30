@@ -1,7 +1,7 @@
 node {
     // Define environment variables
     //def dockerHubCredentialsId = 'Dockerhub // Replace with your Docker Hub credentials ID'
-    def dockerImageName = 'raavi/heart_13'
+    def dockerImageName = 'raavi/new'
     def gitRepoUrl = 'https://github.com/Raavi-Chauhan/Heart.git'
     def gitBranch = 'main'
     def dockerHubUsername ='raavi13'
