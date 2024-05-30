@@ -30,7 +30,7 @@ node {
             //docker.withRegistry('https://hub.docker.com/', dockerHubCredentialsId) {
             //sh "docker push ${imageName}"
             //}
-            sh "docker login -u '${dockerHubUsername}' --password '${dockerHubPassword}'"
+            sh "docker login -u '${dockerHubUsername}' https://index.docker.io/v1/ --password '${dockerHubPassword}'"
             //sh "docker login -u "raavi13" --password 'Nice2Meetyou'"
             // Push the image to Docker Hub
             sh "docker push ${imageName}"
