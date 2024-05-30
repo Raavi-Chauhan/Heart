@@ -80,7 +80,7 @@ def predict():
        # file.close()
         #loaded=pickle.load(open(file,'rb'))
 
-        file1=open('./var/lib/jenkins/workspace/predict.p','rb')
+        file1=open('../var/lib/jenkins/workspace/predict.p','rb')
         loaded=pickle.load(file1)
         file1.close()
 
