@@ -14,6 +14,7 @@ RUN apt-get update && \
     build-essential \
     wget \
     && apt-get clean \
+    apt-get install zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir \
