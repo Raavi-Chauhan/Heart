@@ -40,6 +40,6 @@ node {
     } catch (Exception e) {
         // Handle errors
         echo "Error: ${e.getMessage()}"
-        currentBuild.result = 'FAILURE'
+        currentBuild.result = 'FAILURE!!'
     }
 }
