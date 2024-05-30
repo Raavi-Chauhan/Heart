@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.naive_bayes import GaussianNB
 
-import tensorflow as tf
+import tensorflow 
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras.models import Model, Sequential, load_model
 
