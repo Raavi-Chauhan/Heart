@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: heart
+  labels:
+    app: heart1
+spec:
+  containers:
+  - name: heartweb
+    image: raavi13/new:$(BUILD_NUMBER)
+    ports:
+    - containerPort: 3000

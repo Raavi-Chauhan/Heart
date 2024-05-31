@@ -1,6 +1,5 @@
 import pickle
-import tarfile 
-import joblib 
+import joblib
 import pandas as pd
 from flask import Flask, render_template, request
 from sklearn.ensemble import RandomForestClassifier
@@ -11,7 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.naive_bayes import GaussianNB
 
-import tensorflow 
+import tensorflow
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras.models import Model, Sequential, load_model
 
