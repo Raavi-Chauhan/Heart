@@ -26,7 +26,7 @@ model.compile(optimizer='adam',loss='mse')
 ## training the model
 model.fit(X_train, y_train,epochs=100, batch_size=20,validation_data=(X_test,y_test))
 
-joblib.dump(model, 'predict.joblib')        
-#file2=open('predict.p','wb')
-#pickle.dump(model,file2)
-#file2.close()
+#joblib.dump(model, 'predict.joblib')        
+file2=open('predict.p','wb')
+pickle.dump(model,file2)
+file2.close()
