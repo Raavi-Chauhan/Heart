@@ -27,16 +27,14 @@ model.compile(optimizer='adam',loss='mse')
 ## training the model
 model.fit(X_train, y_train,epochs=100, batch_size=20,validation_data=(X_test,y_test))
 
-<<<<<<< HEAD
+
 #joblib.dump(model, 'predict.joblib')       
 model.save('predict.h5')
   
 #file2=open('predict.p','wb')
 #pickle.dump(model,file2)
 #file2.close()
-=======
 #joblib.dump(model, 'predict.joblib')        
-file2=open('predict.p','wb')
-pickle.dump(model,file2)
-file2.close()
->>>>>>> c04e78f8fa25dc82cc08d5ed51c1afdb12222457
+#file2=open('predict.p','wb')
+#pickle.dump(model,file2)
+#file2.close()
