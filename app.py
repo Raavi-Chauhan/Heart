@@ -83,7 +83,7 @@ def predict():
         #loaded = joblib.load('./predict.joblib')
         file1=open('./predict.p','rb')
         loaded=pickle.load(file1)
-        file1.close()
+        file1.close()
 
         y_pred = loaded.predict([[BP, Cholesterol, Cholesterol_check, BMI, Smoker, Stroke, Diabetes, Alcohol, Health_Care_Scheme, Not_Consulted, Gerenal_Health, Mental_Health, Physical_Health, Difficulty_Walk, Sex, Age]])
         print(y_pred[0][0])
