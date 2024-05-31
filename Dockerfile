@@ -22,7 +22,7 @@ RUN pip3 install --no-cache-dir \
     scikit-learn \
     tensorflow==2.9 \
     flask \
-    turtle
+    joblib
 WORKDIR /myapp
 COPY . /myapp
 EXPOSE 3000
