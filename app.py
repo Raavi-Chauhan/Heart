@@ -1,5 +1,6 @@
 import pickle
 import tarfile 
+import joblib 
 import pandas as pd
 from flask import Flask, render_template, request
 from sklearn.ensemble import RandomForestClassifier
@@ -80,10 +81,10 @@ def predict():
        # pickle.dump(model,open(file,'wb'))
        # file.close()
         #loaded=pickle.load(open(file,'rb'))
-
-        file1=open('./predict.p','rb+')
-        loaded=pickle.load(file1)
-        file1.close()
+        loaded = joblib.load('predict.joblib')
+        #file1=open('./predict.p','rb+')
+        #loaded=pickle.load(file1)
+        #file1.close()
 
         y_pred = loaded.predict([[BP, Cholesterol, Cholesterol_check, BMI, Smoker, Stroke, Diabetes, Alcohol, Health_Care_Scheme, Not_Consulted, Gerenal_Health, Mental_Health, Physical_Health, Difficulty_Walk, Sex, Age]])
         print(y_pred[0][0])

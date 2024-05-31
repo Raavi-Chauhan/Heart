@@ -1,4 +1,5 @@
 import pickle  
+import joblib
 import tensorflow
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input,Dense
@@ -24,7 +25,8 @@ model = Model(inputs=input_layer, outputs=output_layer)
 model.compile(optimizer='adam',loss='mse')
 ## training the model
 model.fit(X_train, y_train,epochs=100, batch_size=20,validation_data=(X_test,y_test))
-        
-file2=open('predict.p','wb')
-pickle.dump(model,file2)
-file2.close()
+
+joblib.dump(model, 'predict.joblib')        
+#file2=open('predict.p','wb')
+#pickle.dump(model,file2)
+#file2.close()
