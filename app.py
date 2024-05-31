@@ -81,7 +81,7 @@ def predict():
        # file.close()
         #loaded=pickle.load(open(file,'rb'))
         #loaded = joblib.load('predict.joblib')
-        loaded = load_model('./model.h5')
+        loaded = load_model('./predict.h5')
         #loaded = joblib.load('./predict.joblib')
         #file1=open('./predict.p','rb')
         #loaded=pickle.load(file1)
