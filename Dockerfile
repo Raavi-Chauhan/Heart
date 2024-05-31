@@ -20,7 +20,7 @@ RUN apt-get update && \
 RUN pip3 install --no-cache-dir \
     pandas \
     scikit-learn \
-    tensorflow==2.7 \
+    tensorflow==2.9 \
     flask \
     joblib
 WORKDIR /myapp
