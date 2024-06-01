@@ -67,10 +67,10 @@ node {
 
                 // Apply the Kubernetes manifests
                 
-                sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f deployment.yaml -n jenkins '
+                sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f deployment-processed.yaml -n jenkins '
                 //sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
                 sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f servive.yaml -n jenkins '
-                sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f pod.yaml -n jenkins '
+                sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f pod-processed.yaml -n jenkins '
                //sh "kubectl --kubeconfig=${kubeconfigPath} apply -f pod-processed.yaml --validate=false"
                 sh 'kubectl --token $KUBE_TOKEN --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true get svc -n jenkins '
                 //sh 'minikube service heart-service -n jenkins --url'
