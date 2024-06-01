@@ -52,12 +52,12 @@ node {
             //"""
             script {
                         def deploymentYaml = readFile 'deployment.yaml'
-                        def processedDeploymentYaml = deploymentYaml.replace("raavi13/new:${buildNumber}","${dockerImageName}:${buildNumber}")
+                        def processedDeploymentYaml = deploymentYaml.replace("raavi13/new:latest","${dockerImageName}:${buildNumber}")
                         writeFile file: 'deployment-processed.yaml', text: processedDeploymentYaml
 
                         // Process pod.yaml if needed
                         def podYaml = readFile 'pod.yaml'
-                        def processedPodYaml = podYaml.replace("raavi13/new:${buildNumber}","${dockerImageName}:${buildNumber}")
+                        def processedPodYaml = podYaml.replace("raavi13/new:latest","${dockerImageName}:${buildNumber}")
                         writeFile file: 'pod-processed.yaml', text: processedPodYaml
                     }
             // Deploy to Minikube
