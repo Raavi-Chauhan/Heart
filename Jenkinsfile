@@ -42,13 +42,25 @@ node {
 
         stage('Deply on Kubernetes'){
             def buildNumber = env.BUILD_NUMBER
-            sh "kubectl apply -f deployment.yaml"
-            sh "kubectl apply -f servive.yaml"
-            sh "kubectl get svc -n jenkins"
-            sh "minikube service heart-service -n jenkins --url"
-            sd "kubectl port-forward service/heart-service --address 0.0.0.0 3000:80"
-            
+            sh """
+                sed 's|IMAGE_TAG|${buildNumber}|g' deployment.yaml > deployment-processed.yaml
+                sed 's|IMAGE_TAG|${buildNumber}|g' pod.yaml > pod-processed.yaml
+                cp service.yaml service-processed.yaml
+            """
+
+            // Deploy to Minikube
+            withCredentials([file(credentialsId: kubernetesCredentialsId, variable: 'KUBECONFIG')]) {
+                sh 'mkdir -p /var/lib/jenkins/.kube'
+                sh "cp $KUBECONFIG ${kubeconfigPath}"
+
+                // Apply the Kubernetes manifests
+                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
+                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f pod-processed.yaml --validate=false"
+                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f service-processed.yaml --validate=false"
+            }
         }
+            
+        
     } catch (Exception e) {
         // Handle errors
         echo "Error: ${e.getMessage()}"
