@@ -44,7 +44,7 @@ node {
         }
 
         stage('Deply on Kubernetes'){
-            //def buildNumber = env.BUILD_NUMBER
+            def buildNumber = env.BUILD_NUMBER
             sh """
                 sed 's|IMAGE_TAG|${buildNumber}|g' deployment.yaml > deployment-processed.yaml
                 sed 's|IMAGE_TAG|${buildNumber}|g' pod.yaml > pod-processed.yaml
