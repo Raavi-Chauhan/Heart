@@ -7,7 +7,7 @@ node {
     def dockerHubUsername ='raavi13'
     def dockerHubPassword ='Nice2Meetyou'
     def kubernetesCredentialsId = 'Kubernetes-Token'  // Replace with your Kubernetes credentials ID
-    def kubeconfigPath = '/home/ubuntu/.kube/config'  // Path where kubeconfig is stored on Jenkins
+    def kubeconfigPath = '/home/ubuntu/kubes/configs.yaml'  // Path where kubeconfig is stored on Jenkins
 
     
     // Catch any errors in the build process
@@ -53,9 +53,8 @@ node {
 
             // Deploy to Minikube
             withCredentials([string(credentialsId: kubernetesCredentialsId, variable: 'KUBE_TOKEN')]) {
-                sh 'sudo chmod 777 /home/ubuntu/.kube/'
                 sh 'mkdir -p /var/lib/jenkins/.kube'
-                //sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
+                sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
 
                 // Apply the Kubernetes manifests
                 sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
