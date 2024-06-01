@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
   - name: heartweb
-    image: raavi13/new:${buildNumber}
+    image: raavi13/new:latest
     ports:
     - containerPort: 3000
