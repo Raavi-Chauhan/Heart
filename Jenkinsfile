@@ -53,6 +53,7 @@ node {
 
             // Deploy to Minikube
             withCredentials([string(credentialsId: kubernetesCredentialsId, variable: 'KUBE_TOKEN')]) {
+                sh 'sudo chmod 777 /home/ubuntu/.kube/'
                 sh 'mkdir -p /var/lib/jenkins/.kube'
                 //sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
 
