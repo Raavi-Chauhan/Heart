@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: heartweb
-        image: raavi13/new:$(BUILD_NUMBER)
+        image: raavi13/new:latest
         ports:
         - containerPort: 3000
