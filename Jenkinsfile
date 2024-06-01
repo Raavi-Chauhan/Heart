@@ -57,9 +57,13 @@ node {
                 //sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
 
                 // Apply the Kubernetes manifests
-                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
-                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f pod-processed.yaml --validate=false"
-                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f servive-processed.yaml --validate=false"
+                
+                sh 'kubectl --token $api_token --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f deployment-processed.yaml '
+                //sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
+                sh 'kubectl --token $api_token --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f servive-processed.yaml '
+                //sh "kubectl --kubeconfig=${kubeconfigPath} apply -f pod-processed.yaml --validate=false"
+                //sh 'kubectl --token $api_token --server https://192.168.49.2:8443 --insecure-skip-tls-verify=true apply -f deployment-processed.yaml '
+                //sh "kubectl --kubeconfig=${kubeconfigPath} apply -f servive-processed.yaml --validate=false"
             }
         }
             
