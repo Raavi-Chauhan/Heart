@@ -26,7 +26,7 @@ node {
         stage('Build Docker Image') {
             // Build the Docker image with the build number as the tag
             def buildNumber = env.BUILD_NUMBER
-            def imageName = "${dockerImageName}:${buildNumber}"
+            def imageName = "${dockerImageName}
             sh "docker build -t ${imageName} ."
         }
 
@@ -35,7 +35,7 @@ node {
             //sh "docker push ${imageName}"
             //}
             def buildNumber = env.BUILD_NUMBER
-            def imageName = "${dockerImageName}:${buildNumber}"
+            def imageName = "${dockerImageName}
             sh "docker login -u '${dockerHubUsername}' https://index.docker.io/v1/ --password '${dockerHubPassword}'"
             //sh "docker login -u "raavi13" --password 'Nice2Meetyou'"
             // Push the image to Docker Hub
@@ -44,12 +44,12 @@ node {
         }
 
         stage('Deply on Kubernetes'){
-            def buildNumber = env.BUILD_NUMBER
-            sh """
-                sed 's|IMAGE_TAG|${buildNumber}|g' deployment.yaml > deployment-processed.yaml
-                sed 's|IMAGE_TAG|${buildNumber}|g' pod.yaml > pod-processed.yaml
-                cp servive.yaml servive-processed.yaml
-            """
+            //def buildNumber = env.BUILD_NUMBER
+            //sh """
+                //sed 's|IMAGE_TAG|${buildNumber}|g' deployment.yaml > deployment-processed.yaml
+                //sed 's|IMAGE_TAG|${buildNumber}|g' pod.yaml > pod-processed.yaml
+                //cp servive.yaml servive-processed.yaml
+            //"""
             // Deploy to Minikube
             withCredentials([string(credentialsId: kubernetesCredentialsId, variable: 'KUBE_TOKEN')]) {
                 //sh 'mkdir -p /var/lib/jenkins/.kube'
