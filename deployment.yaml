@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: heartweb
-        image: raavi13/new:latest
+        image: raavi13/new:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
