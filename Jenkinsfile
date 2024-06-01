@@ -6,7 +6,7 @@ node {
     def gitBranch = 'main'
     def dockerHubUsername ='raavi13'
     def dockerHubPassword ='Nice2Meetyou'
-    def kubernetesCredentialsId = '	Kubernetes-Token'  // Replace with your Kubernetes credentials ID
+    def kubernetesCredentialsId = 'Kubernetes-Token'  // Replace with your Kubernetes credentials ID
     def kubeconfigPath = '/home/ubuntu/.kube/config'  // Path where kubeconfig is stored on Jenkins
 
     
@@ -52,7 +52,7 @@ node {
             """
 
             // Deploy to Minikube
-            withCredentials([file(credentialsId: kubernetesCredentialsId, variable: 'KUBECONFIG')]) {
+            withCredentials([string(credentialsId: kubernetesCredentialsId, variable: 'KUBE_TOKEN')]) {
                 sh 'mkdir -p /var/lib/jenkins/.kube'
                 sh "cp $KUBECONFIG ${kubeconfigPath}"
 
