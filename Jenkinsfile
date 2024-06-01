@@ -53,8 +53,8 @@ node {
 
             // Deploy to Minikube
             withCredentials([string(credentialsId: kubernetesCredentialsId, variable: 'KUBE_TOKEN')]) {
-                sh 'mkdir -p /var/lib/jenkins/.kube'
-                sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
+                //sh 'mkdir -p /var/lib/jenkins/.kube'
+                //sh "echo \"${KUBE_TOKEN}\" > ${kubeconfigPath}"
 
                 // Apply the Kubernetes manifests
                 sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
