@@ -45,7 +45,7 @@ node {
             sh """
                 sed 's|IMAGE_TAG|${buildNumber}|g' deployment.yaml > deployment-processed.yaml
                 sed 's|IMAGE_TAG|${buildNumber}|g' pod.yaml > pod-processed.yaml
-                cp service.yaml service-processed.yaml
+                cp servive.yaml servive-processed.yaml
             """
 
             // Deploy to Minikube
@@ -56,7 +56,7 @@ node {
                 // Apply the Kubernetes manifests
                 sh "kubectl --kubeconfig=${kubeconfigPath} apply -f deployment-processed.yaml --validate=false"
                 sh "kubectl --kubeconfig=${kubeconfigPath} apply -f pod-processed.yaml --validate=false"
-                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f service-processed.yaml --validate=false"
+                sh "kubectl --kubeconfig=${kubeconfigPath} apply -f servive-processed.yaml --validate=false"
             }
         }
             
